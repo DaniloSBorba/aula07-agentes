@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Venvs
+.venv/
+venv/
+env/
+
+# Test/coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Linters
+.ruff_cache/
+.mypy_cache/
+
+# Env / secrets
+.env
+.env.local
+*.key
+*.pem
+
+# IDEs
+.idea/
+.vscode/settings.json
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Outputs / runs
+runs/
+results/
+*.log
+.aider*
