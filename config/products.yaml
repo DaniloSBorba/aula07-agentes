@@ -1,0 +1,128 @@
+# =============================================================================
+# Configuração dos produtos da turma
+# =============================================================================
+# O aluno escolhe UM produto via variável de ambiente PRODUCT no .env.
+# Esta config define: persona do agente, tools habilitadas, exemplos de prompt.
+
+educiacao:
+  name: "EducIAção"
+  description: "Tutor pedagógico para alunos em situação de vulnerabilidade"
+  persona: |
+    Você é um tutor pedagógico chamado EducIAção. Sua missão é ajudar
+    alunos do ensino fundamental e médio brasileiro, especialmente
+    aqueles em situação de vulnerabilidade social.
+
+    Princípios:
+    - Tom acolhedor, sem ser infantil. Trate o aluno com respeito.
+    - Explique passo a passo. Use exemplos do cotidiano brasileiro.
+    - NUNCA julgue o aluno por não saber. Reforce que está ali para ajudar.
+    - Se a pergunta sair do escopo educacional, redirecione com gentileza.
+    - Use ferramentas (tools) quando precisar consultar conteúdo da base
+      curricular ou calcular algo. Não invente fatos pedagógicos.
+
+  tools:
+    - knowledge_base_query
+    - calculator
+    - grade_level_classifier
+
+  example_prompts:
+    - "Não entendi fração equivalente. Pode me ensinar com um exemplo simples?"
+    - "Como dividir 3/4 por 2/5? Me explica passo a passo."
+    - "Estou no 8º ano e tenho dificuldade em equação do 1º grau."
+    - "Como organizar meus estudos para a prova de matemática de quinta?"
+
+  knowledge_base:
+    - id: "kb_matematica_fundamental"
+      title: "Matemática Ensino Fundamental"
+      content: |
+        Frações equivalentes: duas frações são equivalentes quando
+        representam a mesma quantidade. Exemplo: 1/2 = 2/4 = 4/8.
+        Para verificar, multiplique cruzado: a/b = c/d se a*d = b*c.
+
+        Divisão de frações: mantenha a primeira, inverta a segunda,
+        multiplique. Exemplo: 3/4 ÷ 2/5 = 3/4 × 5/2 = 15/8.
+
+    - id: "kb_matematica_medio"
+      title: "Matemática Ensino Médio"
+      content: |
+        Equação do 1º grau: ax + b = 0, onde a ≠ 0. Solução: x = -b/a.
+        Equação do 2º grau: ax² + bx + c = 0. Fórmula de Bhaskara:
+        x = (-b ± √(b²-4ac)) / 2a.
+
+    - id: "kb_estudos_estrategia"
+      title: "Estratégias de estudo"
+      content: |
+        Pomodoro adaptado: 25 min foco + 5 min pausa. Para escolas
+        em vulnerabilidade, sugerir blocos de 20+5 dada a maior
+        variabilidade de ambiente em casa. Revisão espaçada:
+        revisar conteúdo 1 dia, 3 dias, 1 semana depois.
+
+designmind:
+  name: "DesignMind AI"
+  description: "Multi-agente de Design Thinking para PMEs brasileiras"
+  persona: |
+    Você é o DesignMind AI, um facilitador de Design Thinking para
+    pequenas e médias empresas brasileiras. Você guia o usuário
+    pelas 5 fases: Empatizar, Definir, Idear, Prototipar, Testar.
+
+    Princípios:
+    - Tom profissional mas acessível. PMEs brasileiras não têm
+      consultoria cara — você é a alternativa.
+    - SEMPRE identifique em qual fase o usuário está antes de sugerir.
+    - Use ferramentas para validar fase, gerar prompts de ideação,
+      ou estruturar um teste com clientes.
+    - Saídas precisam ser ACIONÁVEIS. Frases vagas ("converse com
+      seu cliente") são proibidas. Dê passos concretos.
+    - Se o problema sair de DT (ex: questão jurídica, financeira),
+      redirecione para consultor especializado.
+
+  tools:
+    - design_phase_validator
+    - knowledge_base_query
+    - ideation_prompt_generator
+
+  example_prompts:
+    - "Tenho uma loja de doces em SP e quero entender por que clientes não voltam."
+    - "Já entrevistei 5 clientes. Como sintetizar insights?"
+    - "Preciso gerar ideias de novos sabores. Me ajude com brainstorm estruturado."
+    - "Como testar um sabor novo sem gastar muito em produção?"
+
+  knowledge_base:
+    - id: "kb_dt_empatizar"
+      title: "Fase 1: Empatizar"
+      content: |
+        Empatizar = entender profundamente o usuário. Ferramentas:
+        entrevistas qualitativas (5-7 pessoas), observação direta
+        (shadowing), mapa de empatia. Para PMEs: comece pelos 3
+        clientes que mais frequentam e os 3 que pararam de comprar.
+
+    - id: "kb_dt_definir"
+      title: "Fase 2: Definir"
+      content: |
+        Definir = transformar dados de empatia em problema claro.
+        Use Point of View: "[usuário] precisa de [necessidade]
+        porque [insight surpreendente]". Evite definir problema
+        como "falta marketing" — isso é solução disfarçada.
+
+    - id: "kb_dt_idear"
+      title: "Fase 3: Idear"
+      content: |
+        Brainstorming estruturado: How Might We (HMW). Exemplo:
+        "Como podemos fazer X sem Y?". Quantidade > qualidade
+        nesta fase. Meta: 30+ ideias antes de filtrar.
+
+    - id: "kb_dt_prototipar"
+      title: "Fase 4: Prototipar"
+      content: |
+        Prototipar barato e rápido. PMEs não têm budget de R&D.
+        Use: storyboard, mockup em papel, MVP de baixa fidelidade.
+        Regra: protótipo deve ser descartável. Se você ama o
+        protótipo, está investindo demais.
+
+    - id: "kb_dt_testar"
+      title: "Fase 5: Testar"
+      content: |
+        Testar com 5-7 usuários reais. Não pergunte "você gostou?"
+        — pergunte "o que você fez aqui?". Observe comportamento,
+        não opinião. Coletar: o que funcionou, o que confundiu,
+        o que surpreendeu.

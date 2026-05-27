@@ -1,0 +1,13 @@
+# Dependências do Hugging Face Space
+# Subset enxuto do pyproject.toml — sem FastAPI, sem dev tools, sem typer/rich.
+# Versões fixadas para reprodutibilidade.
+
+gradio>=4.44.0
+openai>=1.55.0
+langgraph>=0.2.50
+langchain-core>=0.3.20
+langchain-openai>=0.2.10
+pydantic>=2.9.0
+pydantic-settings>=2.6.0
+pyyaml>=6.0.2
+python-dotenv>=1.0.1
