@@ -1,4 +1,4 @@
-.PHONY: help install smoke test eval serve mcp clean format lint demo
+.PHONY: help install smoke test eval serve mcp clean format lint demo ask multi gradio all-checks
 
 # Variáveis carregadas do .env quando rodadas via cli interno
 PYTHON := python
@@ -26,8 +26,11 @@ serve:  ## Inicia FastAPI em http://localhost:8000
 mcp:  ## Inicia servidor MCP local mock em http://localhost:8001
 	$(PYTHON) -m src.cli mcp
 
-ask:  ## Pergunta ao agente via CLI. Uso: make ask QUERY="sua pergunta"
+ask:  ## Pergunta ao agente single via CLI. Uso: make ask QUERY="sua pergunta"
 	$(PYTHON) -m src.cli ask "$(QUERY)"
+
+multi:  ## Pergunta ao multi-agente LangGraph. Uso: make multi QUERY="sua pergunta"
+	$(PYTHON) -m src.cli multi "$(QUERY)"
 
 eval:  ## Roda avaliação BFCL local (function calling em PT-BR)
 	$(PYTHON) -m src.cli eval
